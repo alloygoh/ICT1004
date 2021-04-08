@@ -12,6 +12,9 @@ if (!$auth->isLogged()){
 
 $shash = $auth->getCurrentSessionHash();
 if ($auth->logout($shash)){
+    // set the expiration date to one hour ago
+    setcookie("phpauth_session_cookie", "", time() - 3600);
+    unset($_COOKIE['phpauth_session_cookie']);
     header('Location: index.php',true,302);
     exit();
 }
