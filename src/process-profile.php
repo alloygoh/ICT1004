@@ -31,7 +31,7 @@ if (!empty($_POST["changeEmail"])) {
         if (empty($_POST['currentPassword'])){
             bad_exit("Password not entered");
         }
-        $currentpass = sanitize_input($_POST['currentPassword']);
+        $currentpass = $_POST['currentPassword'];
         $response = $auth->changeEmail($cuid,$email, $currentpass);
         $success = !$response['error'];
         if (!$success){
