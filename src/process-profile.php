@@ -76,7 +76,7 @@ if (!empty($_POST["currentPassword"]) && !empty($_POST["newPassword"]) && !empty
     if (!$success){
         bad_exit($response['message']);
     }
-} elseif(count(array_unique($values)) !== 1){
+} elseif(count(array_unique($values)) !== 1 and $email === ""){
     // inconsistent input
     bad_exit("Inconsistent input in password fields");
 }
